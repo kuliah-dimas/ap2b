@@ -1,6 +1,6 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
-from PyQt6.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+from PyQt5.QtCore import Qt
 import requests
 import webbrowser
 from flask import Flask
@@ -72,7 +72,7 @@ class FileUploaderWindow(QMainWindow):
             try:
                 files = {'file': open(self.uploaded_file_path, 'rb')}
                 response = requests.post(
-                    'http://127.0.0.1:5000/upload', files=files)
+                    'http://localhost:5000/upload', files=files)
                 if response.status_code == 200:
                     QMessageBox.information(
                         self, 'Success', 'File uploaded successfully')
@@ -90,7 +90,7 @@ class FileUploaderWindow(QMainWindow):
     def open_web_file(self):
         if self.uploaded_file_path:
             file_name = self.uploaded_file_path.split('/')[-1]
-            web_url = f"http://127.0.0.1:5000/uploads/{file_name}"
+            web_url = f"http://localhost:5000/uploads/{file_name}"
             webbrowser.open(web_url)
         else:
             QMessageBox.warning(self, 'Warning', 'Please upload a file first')
