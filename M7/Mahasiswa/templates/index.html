@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Daftar Mahasiswa</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(45deg, #f3c4fb, #a8e063);
+      }
+      .container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: "Helvetica", sans-serif;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 20px;
+      }
+      .table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .table th,
+      .table td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+      .table th {
+        background-color: #f2f2f2;
+      }
+      .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .table tr:hover {
+        background-color: #e9e9e9;
+      }
+      .btn {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daftar Mahasiswa</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>NPM</th>
+            <th>Nilai UAS</th>
+            <th>Nilai UU</th>
+            <th>Nilai UTS</th>
+            <th>Rata-rata Nilai</th>
+            <th>Grade</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.npm }}</td>
+            <td>{{ student.uas }}</td>
+            <td>{{ student.uu }}</td>
+            <td>{{ student.uts }}</td>
+            <td>{{ student.total }}</td>
+            <td>{{ student.grade }}</td>
+            <td>
+              <a
+                href="{{ url_for('edit_data', id=student.id) }}"
+                class="btn btn-primary"
+                >Edit</a
+              >
+              <form
+                action="{{ url_for('delete_data', id=student.id) }}"
+                method="POST"
+                style="display: inline"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br />
+      <a href="{{ url_for('input_data') }}" class="btn btn-success"
+        >Tambah Mahasiswa</a
+      >
+    </div>
+  </body>
+</html>

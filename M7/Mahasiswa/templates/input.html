@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Input Mahasiswa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(45deg, #f3c4fb, #a8e063);
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Helvetica', sans-serif;
+            margin: 0 auto; /* Menggeser konten ke tengah */
+            max-width: 600px; /* Membatasi lebar konten */
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Input Mahasiswa</h1>
+        <form action="{{ url_for('input_data') }}" method="POST">
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="npm">NPM:</label>
+                <input type="text" class="form-control" id="npm" name="npm" required>
+            </div>
+            <div class="form-group">
+                <label for="uas">Nilai UAS:</label>
+                <input type="number" class="form-control" id="uas" name="uas" required>
+            </div>
+            <div class="form-group">
+                <label for="uu">Nilai UU:</label>
+                <input type="number" class="form-control" id="uu" name="uu" required>
+            </div>
+            <div class="form-group">
+                <label for="uts">Nilai UTS:</label>
+                <input type="number" class="form-control" id="uts" name="uts" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}">Kembali</a>
+    </div>
+</body>
+
+</html>

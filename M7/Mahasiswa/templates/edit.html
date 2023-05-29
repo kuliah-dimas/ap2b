@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Mahasiswa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(45deg, #f3c4fb, #a8e063);
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Helvetica', sans-serif;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 class="text-center">Edit Mahasiswa</h1>
+                <form action="{{ url_for('edit_data', id=student.id) }}" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" value="{{ student.name }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="npm">NPM:</label>
+                        <input type="text" id="npm" name="npm" value="{{ student.npm }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uas">Nilai UAS:</label>
+                        <input type="number" id="uas" name="uas" value="{{ student.uas }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uu">Nilai UU:</label>
+                        <input type="number" id="uu" name="uu" value="{{ student.uu }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uts">Nilai UTS:</label>
+                        <input type="number" id="uts" name="uts" value="{{ student.uts }}" class="form-control" required>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+                <br>
+                <div class="text-center">
+                    <a href="{{ url_for('index') }}" class="btn btn-default">Kembali</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

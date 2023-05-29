@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu List</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #6facc3;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Menu List</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for menu in menus %}
+          <tr>
+            <td>{{ menu.id }}</td>
+            <td>{{ menu.name }}</td>
+            <td>Rp {{ '{:,.0f}'.format(menu.price) }}</td>
+            <td>
+              <a
+                href="{{ url_for('edit_menu', id=menu.id) }}"
+                class="btn btn-warning d-inline-block mr-2"
+                >Edit</a
+              ><a
+                href="{{ url_for('delete_menu', id=menu.id) }}"
+                class="btn btn-danger d-inline-block"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="{{ url_for('add_menu') }}" class="btn btn-primary">Add Menu</a>
+    </div>
+  </body>
+</html>
